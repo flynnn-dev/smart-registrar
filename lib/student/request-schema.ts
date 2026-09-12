@@ -28,3 +28,38 @@ export const documentRequestSchema = z.object({
 });
 
 export type DocumentRequestValues = z.infer<typeof documentRequestSchema>;
+
+export const requestStepSchemas = {
+  1: documentRequestSchema.pick({ documentTypeId: true }),
+  2: documentRequestSchema.pick({ purpose: true, remarks: true }),
+  3: documentRequestSchema.pick({
+    appointmentDate: true,
+    appointmentTime: true,
+  }),
+} as const;
+
+export function firstRequestStepError(
+  step: keyof typeof requestStepSchemas,
+  values: DocumentRequestValues
+): { field: keyof DocumentRequestValues; message: string } | null {
+  const parsed = requestStepSchemas[step].safeParse(values);
+
+  if (parsed.success) {
+    return null;
+  }
+
+  const issue = parsed.error.issues[0];
+  const field = issue?.path[0];
+
+  if (typeof field !== "string" || !issue?.message) {
+    return {
+      field: "documentTypeId",
+      message: "Check this step and try again.",
+    };
+  }
+
+  return {
+    field: field as keyof DocumentRequestValues,
+    message: issue.message,
+  };
+}

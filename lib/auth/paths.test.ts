@@ -1,10 +1,13 @@
 import { describe, expect, it } from "vitest";
 
 import {
+  fallbackPathForAuthType,
   homePathForRole,
   isProtectedPath,
   isStaffPath,
   isStudentPath,
+  parseEmailOtpType,
+  resolveAuthNextPath,
   safeNextPath,
 } from "@/lib/auth/paths";
 
@@ -48,5 +51,32 @@ describe("safeNextPath", () => {
   it("falls back when the value is missing or malformed", () => {
     expect(safeNextPath(null, "/login")).toBe("/login");
     expect(safeNextPath("%E0%A4%A", "/login")).toBe("/login");
+  });
+});
+
+describe("email confirmation redirects", () => {
+  it("reads next from a confirmation or callback URL", () => {
+    expect(
+      resolveAuthNextPath(
+        "https://smart-registrar.vercel.app/auth/callback?next=%2Fstudent%2Fdashboard",
+        "/"
+      )
+    ).toBe("/student/dashboard");
+    expect(
+      resolveAuthNextPath(
+        "http://localhost:3000/auth/confirm?next=/update-password",
+        "/"
+      )
+    ).toBe("/update-password");
+  });
+
+  it("rejects foreign redirect targets", () => {
+    expect(resolveAuthNextPath("https://evil.example/phish", "/login")).toBe(
+      "/login"
+    );
+    expect(parseEmailOtpType("email")).toBe("email");
+    expect(parseEmailOtpType("not-a-type")).toBeNull();
+    expect(fallbackPathForAuthType("recovery")).toBe("/update-password");
+    expect(fallbackPathForAuthType("signup")).toBe("/student/dashboard");
   });
 });

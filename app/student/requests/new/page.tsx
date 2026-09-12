@@ -22,11 +22,13 @@ export default async function StudentNewRequestPage() {
   ]);
 
   return (
-    <div className="space-y-8">
-      <PageHeader
-        title="New Request"
-        description="Submit a document request and reserve a pickup appointment."
-      />
+    <div className="-mx-4 -my-6 flex h-[calc(100dvh-3.5rem-env(safe-area-inset-top))] flex-col md:-mx-8 md:-my-8">
+      <div className="shrink-0 px-4 pt-6 md:px-8 md:pt-8">
+        <PageHeader
+          title="New Request"
+          description="Submit a document request and reserve a pickup appointment."
+        />
+      </div>
       <RequestWizard
         documentTypes={documentTypes}
         slots={slots}

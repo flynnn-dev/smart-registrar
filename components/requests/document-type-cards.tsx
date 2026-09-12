@@ -59,31 +59,25 @@ export function DocumentTypeCards({
   }
 
   return (
-    <fieldset className="space-y-3">
-      <legend className="sr-only">Document type</legend>
+    <div className="space-y-3" role="group" aria-label="Document type">
       <div className="grid gap-3 sm:grid-cols-2">
         {documentTypes.map((documentType) => {
           const Icon = iconForDocumentName(documentType.name);
           const selected = value === documentType.id;
 
           return (
-            <label
+            <button
               key={documentType.id}
+              type="button"
+              aria-pressed={selected}
+              onClick={() => onChange(documentType.id)}
               className={cn(
-                "flex cursor-pointer gap-3 rounded-xl border bg-card p-4 transition-colors",
+                "flex gap-3 rounded-xl border bg-card p-4 text-left transition-colors",
                 selected
                   ? "border-primary bg-primary/5 ring-2 ring-primary/20"
                   : "hover:border-primary/40"
               )}
             >
-              <input
-                type="radio"
-                name="documentTypeId"
-                value={documentType.id}
-                checked={selected}
-                onChange={() => onChange(documentType.id)}
-                className="sr-only"
-              />
               <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-md border bg-muted/60 text-primary">
                 <Icon className="size-4" aria-hidden />
               </span>
@@ -99,7 +93,7 @@ export function DocumentTypeCards({
                   {documentType.processingLabel}
                 </span>
               </span>
-            </label>
+            </button>
           );
         })}
       </div>
@@ -108,6 +102,6 @@ export function DocumentTypeCards({
           {error}
         </p>
       ) : null}
-    </fieldset>
+    </div>
   );
 }

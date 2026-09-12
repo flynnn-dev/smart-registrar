@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { toast } from "sonner";
 
@@ -17,6 +17,7 @@ import { formatAppointmentSlot } from "@/lib/format/datetime";
 import { createStudentDocumentRequest } from "@/lib/student/request-actions";
 import {
   documentRequestSchema,
+  firstRequestStepError,
   type DocumentRequestValues,
 } from "@/lib/student/request-schema";
 import type {
@@ -31,11 +32,9 @@ type RequestWizardProps = {
   studentId: string | null;
 };
 
-const STEP_FIELDS = {
-  1: ["documentTypeId"],
-  2: ["purpose", "remarks"],
-  3: ["appointmentDate", "appointmentTime"],
-} as const;
+function clockValue(time: string) {
+  return time.slice(0, 5);
+}
 
 export function RequestWizard({
   documentTypes,
@@ -44,13 +43,16 @@ export function RequestWizard({
   studentId,
 }: RequestWizardProps) {
   const router = useRouter();
+  const bodyRef = useRef<HTMLDivElement>(null);
   const [step, setStep] = useState(1);
   const [formError, setFormError] = useState<string | null>(null);
   const {
     register,
     handleSubmit,
     setValue,
-    trigger,
+    getValues,
+    setError,
+    clearErrors,
     control,
     formState: { errors, isSubmitting },
   } = useForm<DocumentRequestValues>({
@@ -78,14 +80,25 @@ export function RequestWizard({
     (documentType) => documentType.id === values.documentTypeId
   );
 
-  async function goNext() {
-    const fields = STEP_FIELDS[step as 1 | 2 | 3];
-    const valid = await trigger(fields);
+  useLayoutEffect(() => {
+    bodyRef.current?.scrollTo({ top: 0 });
+  }, [step]);
 
-    if (valid) {
-      setFormError(null);
-      setStep((current) => current + 1);
+  function goNext() {
+    const current = step as 1 | 2 | 3;
+    const issue = firstRequestStepError(current, getValues());
+
+    if (issue) {
+      setError(issue.field, { type: "manual", message: issue.message });
+      setFormError(issue.message);
+      toast.error(issue.message);
+      bodyRef.current?.scrollTo({ top: 0 });
+      return;
     }
+
+    clearErrors();
+    setFormError(null);
+    setStep((currentStep) => currentStep + 1);
   }
 
   async function onSubmit(data: DocumentRequestValues) {
@@ -104,15 +117,25 @@ export function RequestWizard({
   }
 
   return (
-    <form className="space-y-6" onSubmit={handleSubmit(onSubmit)} noValidate>
-      <RequestStepper currentStep={step} />
+    <form
+      className="flex min-h-0 flex-1 flex-col"
+      onSubmit={handleSubmit(onSubmit)}
+      noValidate
+    >
+      <div className="shrink-0 px-4 pt-6 md:px-8">
+        <RequestStepper currentStep={step} />
+      </div>
 
       {formError ? (
-        <p className="rounded-md border border-destructive/20 bg-destructive/10 px-3 py-2 text-sm text-destructive">
+        <p className="mx-4 mt-4 shrink-0 rounded-md border border-destructive/20 bg-destructive/10 px-3 py-2 text-sm text-destructive md:mx-8">
           {formError}
         </p>
       ) : null}
 
+      <div
+        ref={bodyRef}
+        className="min-h-0 flex-1 overflow-y-auto px-4 py-6 md:px-8"
+      >
       {step === 1 ? (
         <section className="space-y-3">
           <div>
@@ -124,9 +147,11 @@ export function RequestWizard({
           <DocumentTypeCards
             documentTypes={documentTypes}
             value={values.documentTypeId ?? ""}
-            onChange={(id) =>
-              setValue("documentTypeId", id, { shouldValidate: true })
-            }
+            onChange={(id) => {
+              setFormError(null);
+              clearErrors("documentTypeId");
+              setValue("documentTypeId", id, { shouldValidate: false });
+            }}
             error={errors.documentTypeId?.message}
           />
         </section>
@@ -190,14 +215,20 @@ export function RequestWizard({
           <AppointmentPicker
             slots={slots}
             date={values.appointmentDate ?? ""}
-            time={values.appointmentTime ?? ""}
+            time={clockValue(values.appointmentTime ?? "")}
             onDateChange={(date) => {
-              setValue("appointmentDate", date, { shouldValidate: true });
+              setFormError(null);
+              clearErrors(["appointmentDate", "appointmentTime"]);
+              setValue("appointmentDate", date, { shouldValidate: false });
               setValue("appointmentTime", "", { shouldValidate: false });
             }}
-            onTimeChange={(time) =>
-              setValue("appointmentTime", time, { shouldValidate: true })
-            }
+            onTimeChange={(time) => {
+              setFormError(null);
+              clearErrors("appointmentTime");
+              setValue("appointmentTime", clockValue(time), {
+                shouldValidate: false,
+              });
+            }}
             dateError={errors.appointmentDate?.message}
             timeError={errors.appointmentTime?.message}
           />
@@ -248,16 +279,18 @@ export function RequestWizard({
           </dl>
         </section>
       ) : null}
+      </div>
 
-      <div className="sticky bottom-0 z-10 -mx-4 mt-6 border-t bg-background/95 px-4 py-3 backdrop-blur-sm md:static md:mx-0 md:mt-0 md:border-0 md:bg-transparent md:px-0 md:py-0 md:backdrop-blur-none">
+      <div className="shrink-0 border-t bg-background px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] md:px-8">
         <div className="flex gap-2">
           {step > 1 ? (
             <Button
               type="button"
               variant="outline"
-              className="flex-1 sm:flex-none"
+              className="min-h-11 flex-1 sm:min-h-8 sm:flex-none"
               onClick={() => {
                 setFormError(null);
+                clearErrors();
                 setStep((current) => current - 1);
               }}
             >
@@ -265,13 +298,17 @@ export function RequestWizard({
             </Button>
           ) : null}
           {step < 4 ? (
-            <Button type="button" className="flex-1 sm:ml-auto sm:flex-none" onClick={goNext}>
+            <Button
+              type="button"
+              className="min-h-11 flex-1 sm:ml-auto sm:min-h-8 sm:flex-none"
+              onClick={goNext}
+            >
               Continue
             </Button>
           ) : (
             <Button
               type="submit"
-              className="flex-1 sm:ml-auto sm:flex-none"
+              className="min-h-11 flex-1 sm:ml-auto sm:min-h-8 sm:flex-none"
               disabled={isSubmitting}
             >
               {isSubmitting ? <Loader2 className="animate-spin" /> : null}

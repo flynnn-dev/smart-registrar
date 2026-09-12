@@ -18,6 +18,10 @@ export function RegisterForm() {
   const router = useRouter();
   const [formError, setFormError] = useState<string | null>(null);
   const [needsConfirmation, setNeedsConfirmation] = useState(false);
+  const [pendingEmail, setPendingEmail] = useState("");
+  const [resendState, setResendState] = useState<
+    "idle" | "sending" | "sent" | "error"
+  >("idle");
   const {
     register,
     handleSubmit,
@@ -70,6 +74,19 @@ export function RegisterForm() {
     }
 
     if (!data.session) {
+      const { data: signedIn, error: signInError } =
+        await supabase.auth.signInWithPassword({
+          email: values.email,
+          password: values.password,
+        });
+
+      if (!signInError && signedIn.session) {
+        router.push(homePathForRole("student"));
+        router.refresh();
+        return;
+      }
+
+      setPendingEmail(values.email);
       setNeedsConfirmation(true);
       return;
     }
@@ -78,14 +95,51 @@ export function RegisterForm() {
     router.refresh();
   }
 
+  async function resendConfirmation() {
+    if (!pendingEmail || resendState === "sending") {
+      return;
+    }
+
+    setResendState("sending");
+    const supabase = createSupabaseBrowserClient();
+    const { error } = await supabase.auth.resend({
+      type: "signup",
+      email: pendingEmail,
+      options: {
+        emailRedirectTo: getAuthCallbackUrl(homePathForRole("student")),
+      },
+    });
+
+    setResendState(error ? "error" : "sent");
+  }
+
   if (needsConfirmation) {
     return (
-      <div className="rounded-md border bg-muted/40 px-4 py-4 text-sm">
+      <div className="space-y-3 rounded-md border bg-muted/40 px-4 py-4 text-sm">
         <p className="font-medium">Confirm your email to finish signing up.</p>
-        <p className="mt-1 text-muted-foreground">
-          We sent a confirmation link to your inbox. After you confirm, you can
-          sign in.
+        <p className="text-muted-foreground">
+          We sent a confirmation link to {pendingEmail || "your inbox"}. After
+          you confirm, you can sign in.
         </p>
+        <div className="flex flex-wrap items-center gap-2">
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            disabled={resendState === "sending" || resendState === "sent"}
+            onClick={resendConfirmation}
+          >
+            {resendState === "sending" ? (
+              <Loader2 className="animate-spin" />
+            ) : null}
+            {resendState === "sent" ? "Link sent" : "Resend confirmation"}
+          </Button>
+          {resendState === "error" ? (
+            <p className="text-destructive">
+              Could not resend the email. Wait a moment and try again.
+            </p>
+          ) : null}
+        </div>
       </div>
     );
   }
