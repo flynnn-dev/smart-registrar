@@ -118,6 +118,7 @@ export function AppointmentActions({
           type="button"
           variant="outline"
           size="sm"
+          className="min-h-11 w-full sm:min-h-8 sm:w-auto"
           disabled={pending}
           onClick={() =>
             setConfirm({

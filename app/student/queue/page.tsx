@@ -46,6 +46,7 @@ export default async function StudentQueuePage({
       <PageHeader
         title="Queue"
         description="Watch the number being served and see how many people are ahead of you."
+        actionsClassName="max-md:hidden"
         actions={
           <Button asChild>
             <Link href="/student/requests/new">New request</Link>

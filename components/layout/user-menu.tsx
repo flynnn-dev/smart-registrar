@@ -1,6 +1,7 @@
 "use client";
 
-import { ChevronsUpDown, LogOut } from "lucide-react";
+import { ChevronsUpDown, LogOut, UserRound } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -21,6 +22,8 @@ type UserMenuProps = {
 };
 
 export function UserMenu({ user }: UserMenuProps) {
+  const router = useRouter();
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -52,6 +55,16 @@ export function UserMenu({ user }: UserMenuProps) {
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
+        {user.role === "student" ? (
+          <DropdownMenuItem
+            onSelect={() => {
+              router.push("/student/profile");
+            }}
+          >
+            <UserRound className="size-4" />
+            Profile
+          </DropdownMenuItem>
+        ) : null}
         <DropdownMenuItem
           onSelect={(event) => {
             event.preventDefault();

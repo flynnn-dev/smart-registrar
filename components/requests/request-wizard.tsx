@@ -81,7 +81,7 @@ export function RequestWizard({
   );
 
   useLayoutEffect(() => {
-    bodyRef.current?.scrollTo({ top: 0 });
+    bodyRef.current?.closest("main")?.scrollTo({ top: 0 });
   }, [step]);
 
   function goNext() {
@@ -92,7 +92,7 @@ export function RequestWizard({
       setError(issue.field, { type: "manual", message: issue.message });
       setFormError(issue.message);
       toast.error(issue.message);
-      bodyRef.current?.scrollTo({ top: 0 });
+      bodyRef.current?.closest("main")?.scrollTo({ top: 0 });
       return;
     }
 
@@ -118,7 +118,7 @@ export function RequestWizard({
 
   return (
     <form
-      className="flex min-h-0 flex-1 flex-col"
+      className="flex min-h-0 flex-1 flex-col pb-20"
       onSubmit={handleSubmit(onSubmit)}
       noValidate
     >
@@ -132,10 +132,7 @@ export function RequestWizard({
         </p>
       ) : null}
 
-      <div
-        ref={bodyRef}
-        className="min-h-0 flex-1 overflow-y-auto px-4 py-6 md:px-8"
-      >
+      <div ref={bodyRef} className="flex-1 px-4 py-6 md:px-8">
       {step === 1 ? (
         <section className="space-y-3">
           <div>
@@ -281,7 +278,7 @@ export function RequestWizard({
       ) : null}
       </div>
 
-      <div className="shrink-0 border-t bg-background px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] md:px-8">
+      <div className="fixed inset-x-0 bottom-[var(--app-tabbar)] z-20 border-t bg-background px-4 py-3 md:left-64 md:px-8 print:static">
         <div className="flex gap-2">
           {step > 1 ? (
             <Button

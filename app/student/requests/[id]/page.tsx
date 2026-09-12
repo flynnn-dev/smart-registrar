@@ -131,9 +131,9 @@ export default async function StudentRequestDetailPage({
         </div>
       </section>
 
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap">
         {request.queueNumber ? (
-          <Button asChild variant="outline">
+          <Button asChild variant="outline" className="min-h-11 sm:min-h-8">
             <Link
               href={
                 request.queueDate
@@ -146,7 +146,7 @@ export default async function StudentRequestDetailPage({
           </Button>
         ) : null}
         {request.appointmentLabel ? (
-          <Button asChild variant="outline">
+          <Button asChild variant="outline" className="min-h-11 sm:min-h-8">
             <Link href="/student/appointments">View appointment</Link>
           </Button>
         ) : null}

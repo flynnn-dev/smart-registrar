@@ -29,6 +29,7 @@ export default async function StudentAppointmentsPage() {
       <PageHeader
         title="Appointments"
         description="Review the registrar visits linked to your document requests."
+        actionsClassName="max-md:hidden"
         actions={
           <Button asChild>
             <Link href="/student/requests/new">New request</Link>

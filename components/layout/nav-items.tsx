@@ -17,10 +17,10 @@ import {
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import type { NavIconName, NavItem } from "@/lib/navigation";
+import { matchNavItem, type NavIconName, type NavItem } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
 
-const navIcons: Record<NavIconName, typeof LayoutDashboard> = {
+export const navIcons: Record<NavIconName, typeof LayoutDashboard> = {
   dashboard: LayoutDashboard,
   requestNew: FilePlus2,
   requests: ClipboardList,
@@ -47,15 +47,7 @@ export function NavItems({ items, onNavigate }: NavItemsProps) {
     <nav aria-label="Primary" className="flex flex-col gap-0.5">
       {items.map((item) => {
         const Icon = navIcons[item.icon];
-        const match = items
-          .filter((candidate) =>
-            candidate.href === "/"
-              ? pathname === "/"
-              : pathname === candidate.href ||
-                pathname.startsWith(`${candidate.href}/`)
-          )
-          .sort((a, b) => b.href.length - a.href.length)[0];
-        const isActive = match?.href === item.href;
+        const isActive = matchNavItem(pathname, items)?.href === item.href;
 
         return (
           <Link

@@ -72,7 +72,7 @@ export function DocumentTypeCards({
               aria-pressed={selected}
               onClick={() => onChange(documentType.id)}
               className={cn(
-                "flex gap-3 rounded-xl border bg-card p-4 text-left transition-colors",
+                "flex touch-pan-y gap-3 rounded-xl border bg-card p-4 text-left transition-colors",
                 selected
                   ? "border-primary bg-primary/5 ring-2 ring-primary/20"
                   : "hover:border-primary/40"

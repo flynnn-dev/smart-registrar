@@ -28,6 +28,7 @@ export default async function StudentDashboardPage() {
       <PageHeader
         title={`${getDayGreeting()}, ${firstName}`}
         description="Manage your registrar requests and appointments."
+        actionsClassName="max-md:hidden"
         actions={
           <Button asChild>
             <Link href="/student/requests/new">New request</Link>

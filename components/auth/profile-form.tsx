@@ -108,7 +108,11 @@ export function ProfileForm({ profile }: ProfileFormProps) {
         />
       </FormField>
 
-      <Button type="submit" disabled={isSubmitting || !isDirty}>
+      <Button
+        type="submit"
+        className="min-h-11 w-full sm:min-h-8 sm:w-auto"
+        disabled={isSubmitting || !isDirty}
+      >
         {isSubmitting ? <Loader2 className="animate-spin" /> : null}
         Save changes
       </Button>

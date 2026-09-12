@@ -25,6 +25,7 @@ export default async function StudentRequestsPage() {
       <PageHeader
         title="My Requests"
         description="Track every document request from submission to pickup."
+        actionsClassName="max-md:hidden"
         actions={
           <Button asChild>
             <Link href="/student/requests/new">New request</Link>

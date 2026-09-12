@@ -91,11 +91,11 @@ export default async function StudentRequestSuccessPage({
         </dl>
       </section>
 
-      <div className="flex flex-wrap gap-2">
-        <Button asChild>
+      <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap">
+        <Button asChild className="min-h-11 sm:min-h-8">
           <Link href={`/student/requests/${receipt.id}`}>View request</Link>
         </Button>
-        <Button variant="outline" asChild>
+        <Button variant="outline" asChild className="min-h-11 sm:min-h-8">
           <Link href="/student/dashboard">Back to dashboard</Link>
         </Button>
       </div>

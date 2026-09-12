@@ -20,6 +20,7 @@ export default async function StudentLayout({
       navigation={studentNavigation}
       user={toAppUser(context.profile)}
       inbox={inbox}
+      mobileNav="tabs"
     >
       {children}
     </AppShell>

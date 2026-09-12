@@ -14,7 +14,7 @@ export function RequestCard({ request }: RequestCardProps) {
       href={`/student/requests/${request.id}`}
       className="block rounded-xl border bg-card p-4 transition-colors hover:bg-accent/40 focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:outline-none"
     >
-      <article className="flex items-start justify-between gap-3">
+      <article className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-3">
         <div className="min-w-0">
           <p className="font-mono text-sm font-semibold tracking-tight">
             {request.requestNumber}
@@ -24,10 +24,16 @@ export function RequestCard({ request }: RequestCardProps) {
           </p>
           <p className="mt-1 text-caption">
             Submitted {formatDateTime(request.submittedAt)}
-            {request.appointmentLabel ? ` · ${request.appointmentLabel}` : ""}
           </p>
+          {request.appointmentLabel ? (
+            <p className="text-caption">{request.appointmentLabel}</p>
+          ) : null}
         </div>
-        <StatusBadge kind="request" status={request.status} />
+        <StatusBadge
+          kind="request"
+          status={request.status}
+          className="self-start"
+        />
       </article>
     </Link>
   );

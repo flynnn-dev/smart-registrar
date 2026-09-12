@@ -15,8 +15,8 @@ export function AppointmentCard({
 }: AppointmentCardProps) {
   return (
     <article className="space-y-3 rounded-xl border bg-card p-4">
-      <div className="flex items-start justify-between gap-3">
-        <div>
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-3">
+        <div className="min-w-0">
           <p className="text-sm font-medium">
             {formatAppointmentSlot(appointment.date, appointment.time)}
           </p>
@@ -31,9 +31,17 @@ export function AppointmentCard({
             {appointment.requestNumber ? ` · ${appointment.requestNumber}` : ""}
           </p>
         </div>
-        <StatusBadge kind="appointment" status={appointment.status} />
+        <StatusBadge
+          kind="appointment"
+          status={appointment.status}
+          className="self-start"
+        />
       </div>
-      {actions ? <div className="flex flex-wrap gap-2">{actions}</div> : null}
+      {actions ? (
+        <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap">
+          {actions}
+        </div>
+      ) : null}
     </article>
   );
 }

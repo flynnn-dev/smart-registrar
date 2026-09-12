@@ -21,20 +21,25 @@ export type NavItem = {
   icon: NavIconName;
 };
 
-export function titleForPath(
+export function matchNavItem(
   pathname: string,
-  items: NavItem[],
-  fallback: string
-): string {
-  const match = items
+  items: NavItem[]
+): NavItem | undefined {
+  return items
     .filter((item) =>
       item.href === "/"
         ? pathname === "/"
         : pathname === item.href || pathname.startsWith(`${item.href}/`)
     )
     .sort((a, b) => b.href.length - a.href.length)[0];
+}
 
-  return match?.label ?? fallback;
+export function titleForPath(
+  pathname: string,
+  items: NavItem[],
+  fallback: string
+): string {
+  return matchNavItem(pathname, items)?.label ?? fallback;
 }
 
 export const landingLinks = [
@@ -51,6 +56,14 @@ export const studentNavigation: NavItem[] = [
   { href: "/student/queue", label: "Queue", icon: "queue" },
   { href: "/student/notifications", label: "Notifications", icon: "notifications" },
   { href: "/student/profile", label: "Profile", icon: "profile" },
+];
+
+export const studentTabNavigation: NavItem[] = [
+  { href: "/student/dashboard", label: "Home", icon: "dashboard" },
+  { href: "/student/requests", label: "Requests", icon: "requests" },
+  { href: "/student/requests/new", label: "New", icon: "requestNew" },
+  { href: "/student/queue", label: "Queue", icon: "queue" },
+  { href: "/student/appointments", label: "Appts", icon: "appointments" },
 ];
 
 export const registrarNavigation: NavItem[] = [

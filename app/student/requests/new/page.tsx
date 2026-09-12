@@ -22,7 +22,7 @@ export default async function StudentNewRequestPage() {
   ]);
 
   return (
-    <div className="-mx-4 -my-6 flex h-[calc(100dvh-3.5rem-env(safe-area-inset-top))] flex-col md:-mx-8 md:-my-8">
+    <div className="-mx-4 -mt-6 flex min-h-full flex-col md:-mx-8 md:-my-8">
       <div className="shrink-0 px-4 pt-6 md:px-8 md:pt-8">
         <PageHeader
           title="New Request"
