@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 import {
   matchNavItem,
   studentNavigation,
+  studentPageTitles,
   studentTabNavigation,
   titleForPath,
 } from "@/lib/navigation";
@@ -28,12 +29,21 @@ describe("matchNavItem", () => {
       matchNavItem("/student/notifications", studentTabNavigation)
     ).toBeUndefined();
   });
+
+  it("leaves profile off the sidebar", () => {
+    expect(studentNavigation.some((item) => item.href === "/student/profile")).toBe(
+      false
+    );
+  });
 });
 
 describe("titleForPath", () => {
   it("uses the matched student label", () => {
     expect(
-      titleForPath("/student/requests/new", studentNavigation, "Student")
+      titleForPath("/student/requests/new", studentPageTitles, "Student")
     ).toBe("New Request");
+    expect(titleForPath("/student/profile", studentPageTitles, "Student")).toBe(
+      "Profile"
+    );
   });
 });

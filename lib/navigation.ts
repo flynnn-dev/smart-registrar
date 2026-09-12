@@ -55,6 +55,10 @@ export const studentNavigation: NavItem[] = [
   { href: "/student/appointments", label: "Appointments", icon: "appointments" },
   { href: "/student/queue", label: "Queue", icon: "queue" },
   { href: "/student/notifications", label: "Notifications", icon: "notifications" },
+];
+
+export const studentPageTitles: NavItem[] = [
+  ...studentNavigation,
   { href: "/student/profile", label: "Profile", icon: "profile" },
 ];
 

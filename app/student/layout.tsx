@@ -5,7 +5,7 @@ import {
   toAppUser,
 } from "@/lib/auth/session";
 import { getNotificationInbox } from "@/lib/notifications/query";
-import { studentNavigation, titleForPath } from "@/lib/navigation";
+import { studentNavigation, studentPageTitles, titleForPath } from "@/lib/navigation";
 
 export default async function StudentLayout({
   children,
@@ -16,7 +16,7 @@ export default async function StudentLayout({
 
   return (
     <AppShell
-      title={titleForPath(pathname, studentNavigation, "Student portal")}
+      title={titleForPath(pathname, studentPageTitles, "Student portal")}
       navigation={studentNavigation}
       user={toAppUser(context.profile)}
       inbox={inbox}
