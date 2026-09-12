@@ -1,0 +1,6 @@
+.agents
+.cursor
+coverage
+.env*
+!.env.example
+!.env.local.example
