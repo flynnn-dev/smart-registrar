@@ -49,7 +49,7 @@ export function WhySection() {
                 delay={delay}
                 className="landing-feature-card"
               >
-                <span className="inline-flex size-11 items-center justify-center rounded-full bg-primary/10 text-primary">
+                <span className="inline-flex size-11 items-center justify-center rounded-full bg-accent text-primary">
                   <Icon className="size-5" aria-hidden />
                 </span>
                 <h3 className="mt-6 text-lg font-semibold tracking-tight">

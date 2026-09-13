@@ -19,7 +19,7 @@ export function PublicFooter({ officeHours }: PublicFooterProps) {
   const contactHref = `mailto:${APP_CONTACT_EMAIL}`;
 
   return (
-    <footer className="bg-black text-white/70">
+    <footer className="bg-ink text-white/70">
       <div className="mx-auto grid w-full max-w-6xl gap-10 px-4 py-14 md:grid-cols-4 md:px-6">
         <div>
           <Logo tone="inverse" />

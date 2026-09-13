@@ -68,8 +68,8 @@ export function PublicHeader({
         "sticky top-0 z-20 pt-[env(safe-area-inset-top)] motion-safe:transition-[background-color,box-shadow,border-color] motion-safe:duration-200",
         marketing
           ? cn(
-              "border-b border-white/8 bg-black text-white",
-              scrolled && "shadow-[0_8px_24px_-16px_rgb(0_0_0/0.6)]"
+              "border-b border-white/8 bg-ink text-white",
+              scrolled && "shadow-[0_8px_24px_-16px_oklch(0.12_0.05_210/0.7)]"
             )
           : cn(
               "border-b backdrop-blur-sm",
@@ -109,7 +109,13 @@ export function PublicHeader({
           </nav>
         ) : null}
         <div className="flex items-center gap-1 sm:gap-2">
-          {marketing ? null : <ThemeToggle />}
+          <ThemeToggle
+            className={
+              marketing
+                ? "text-white hover:bg-white/10 hover:text-white"
+                : undefined
+            }
+          />
           {showActions ? (
             <>
               <Button

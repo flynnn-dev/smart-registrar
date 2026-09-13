@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 
 export function CtaSection() {
   return (
-    <section className="bg-black text-white">
+    <section className="bg-ink text-white">
       <Reveal className="mx-auto flex w-full max-w-3xl flex-col items-center px-4 py-20 text-center md:px-6 md:py-28">
         <h2 className="landing-display text-white md:text-5xl">
           Have the request in before you reach the window.

@@ -34,11 +34,11 @@ export function QueuePreview({ className }: QueuePreviewProps) {
           </p>
         </div>
 
-        <div className="rounded-xl border border-indigo-100 bg-indigo-50 px-5 py-6 text-center">
-          <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-indigo-700/80">
+        <div className="rounded-xl border border-[oklch(0.88_0.05_195)] bg-[oklch(0.96_0.035_195)] px-5 py-6 text-center">
+          <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-[oklch(0.42_0.1_198)]">
             Your number
           </p>
-          <p className="mt-2 font-mono text-5xl font-semibold tracking-tight text-indigo-700">
+          <p className="mt-2 font-mono text-5xl font-semibold tracking-tight text-[oklch(0.38_0.11_198)]">
             A-027
           </p>
         </div>

@@ -4,6 +4,7 @@ import { Monitor, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -37,7 +38,7 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
             <Button
               variant="ghost"
               size="icon"
-              className={className}
+              className={cn("rounded-full", className)}
               aria-label="Change theme"
             >
               <Sun className="size-4 dark:hidden" />

@@ -14,8 +14,12 @@ type AuthShellProps = {
 export function AuthShell({ headline, description, children }: AuthShellProps) {
   return (
     <div className="flex flex-1 flex-col lg:flex-row">
-      <aside className="bg-black px-6 py-8 text-white lg:flex lg:w-[min(28rem,42%)] lg:shrink-0 lg:flex-col lg:justify-center lg:px-12 lg:py-16">
-        <Reveal instant>
+      <aside className="relative overflow-hidden bg-ink px-6 py-8 text-white lg:flex lg:w-[min(28rem,42%)] lg:shrink-0 lg:flex-col lg:justify-center lg:px-12 lg:py-16">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(28rem_18rem_at_10%_0%,color-mix(in_oklch,var(--warm)_20%,transparent),transparent_58%),radial-gradient(22rem_16rem_at_100%_100%,color-mix(in_oklch,var(--brand)_28%,transparent),transparent_50%)]"
+        />
+        <Reveal instant className="relative">
           <p className="text-sm text-white/50">
             {APP_SCHOOL_NAME}
             <span className="mx-2 text-white/25" aria-hidden>

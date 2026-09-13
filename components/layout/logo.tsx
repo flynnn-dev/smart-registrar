@@ -25,7 +25,7 @@ export function Logo({
         className={cn(
           "inline-flex size-8 items-center justify-center rounded-md shadow-xs",
           inverse
-            ? "bg-white text-black"
+            ? "bg-white text-ink"
             : "bg-primary text-primary-foreground"
         )}
       >

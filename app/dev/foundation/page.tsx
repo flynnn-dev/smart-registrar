@@ -47,6 +47,9 @@ export const dynamic = "force-dynamic";
 
 const tokenSwatches = [
   { name: "Primary", className: "bg-primary" },
+  { name: "Brand", className: "bg-brand" },
+  { name: "Ink", className: "bg-ink" },
+  { name: "Warm", className: "bg-warm" },
   { name: "Foreground", className: "bg-foreground" },
   { name: "Muted", className: "bg-muted ring-1 ring-border" },
   { name: "Border", className: "bg-background ring-1 ring-border" },

@@ -44,7 +44,7 @@ export function DashboardPreview({
         </div>
 
         <div className="flex items-center gap-3 rounded-lg border border-neutral-200 bg-neutral-50 px-3 py-3">
-          <span className="inline-flex size-8 items-center justify-center rounded-md bg-indigo-50 text-indigo-600">
+          <span className="inline-flex size-8 items-center justify-center rounded-md bg-[oklch(0.95_0.04_195)] text-[oklch(0.4_0.1_198)]">
             <FileText className="size-4" aria-hidden />
           </span>
           <div className="min-w-0">
@@ -75,7 +75,7 @@ export function DashboardPreview({
 
         {variant === "full" ? (
           <div className="flex items-start gap-3 rounded-lg border border-neutral-200 bg-neutral-50 px-3 py-3">
-            <span className="inline-flex size-8 items-center justify-center rounded-md bg-indigo-50 text-indigo-600">
+            <span className="inline-flex size-8 items-center justify-center rounded-md bg-[oklch(0.95_0.04_195)] text-[oklch(0.4_0.1_198)]">
               <Bell className="size-4" aria-hidden />
             </span>
             <div className="min-w-0">
@@ -138,7 +138,7 @@ function PreviewProgress({ current }: { current: number }) {
               className={cn(
                 "flex size-6 shrink-0 items-center justify-center rounded-full text-[11px] font-medium",
                 complete && "bg-emerald-500 text-white",
-                active && "bg-indigo-600 text-white",
+                active && "bg-[oklch(0.48_0.12_198)] text-white",
                 !complete &&
                   !active &&
                   "border border-neutral-200 bg-white text-neutral-400"

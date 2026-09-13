@@ -10,8 +10,12 @@ const HERO_FACTS = ["Request online", "Book a slot", "Digital queue"] as const;
 
 export function LandingHero() {
   return (
-    <section className="relative overflow-x-clip bg-black text-white">
-      <div className="mx-auto flex w-full max-w-4xl flex-col items-center px-4 pt-16 pb-10 text-center md:px-6 md:pt-24 md:pb-14">
+    <section className="relative overflow-x-clip bg-ink text-white">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(70rem_28rem_at_50%_-12%,color-mix(in_oklch,var(--warm)_24%,transparent),transparent_58%),radial-gradient(36rem_20rem_at_92%_18%,color-mix(in_oklch,var(--brand)_36%,transparent),transparent_52%)]"
+      />
+      <div className="relative mx-auto flex w-full max-w-4xl flex-col items-center px-4 pt-16 pb-10 text-center md:px-6 md:pt-24 md:pb-14">
         <Reveal instant className="w-full">
           <p className="text-sm text-white/50">
             {APP_SCHOOL_NAME}
@@ -68,7 +72,7 @@ export function LandingHero() {
       </div>
 
       <Reveal instant delay={4} className="relative z-10 mx-auto w-full max-w-3xl px-4 pb-0 md:px-6">
-        <div className="translate-y-10 overflow-hidden rounded-[1.75rem] bg-neutral-900 p-2 shadow-[0_24px_80px_-28px_rgb(0_0_0/0.7)] ring-1 ring-white/10 md:translate-y-14">
+        <div className="translate-y-10 overflow-hidden rounded-[1.75rem] bg-[oklch(0.2_0.03_215)] p-2 shadow-[0_24px_80px_-28px_oklch(0.12_0.05_210/0.75)] ring-1 ring-white/10 md:translate-y-14">
           <DashboardPreview className="border-0 shadow-none" />
         </div>
       </Reveal>
