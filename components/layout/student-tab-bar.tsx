@@ -14,7 +14,7 @@ export function StudentTabBar() {
   return (
     <nav
       aria-label="Student"
-      className="fixed inset-x-0 bottom-0 z-20 grid grid-cols-5 border-t bg-background/95 pb-[max(0.35rem,env(safe-area-inset-bottom))] pt-1 backdrop-blur-sm md:hidden print:hidden"
+      className="fixed inset-x-0 bottom-0 z-20 grid grid-cols-5 border-t bg-background/95 pb-[max(0.35rem,env(safe-area-inset-bottom))] pt-1 shadow-[0_-8px_24px_-16px_oklch(0.23_0.03_264/0.18)] backdrop-blur-sm md:hidden print:hidden"
     >
       {studentTabNavigation.map((item) => {
         const Icon = navIcons[item.icon];
@@ -33,7 +33,7 @@ export function StudentTabBar() {
                 ? "text-primary"
                 : isNew
                   ? "text-primary/80"
-                  : "text-muted-foreground"
+                  : "text-muted-foreground hover:text-foreground"
             )}
           >
             <Icon className="size-5 shrink-0" aria-hidden />

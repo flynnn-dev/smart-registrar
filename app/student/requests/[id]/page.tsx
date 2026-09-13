@@ -65,7 +65,7 @@ export default async function StudentRequestDetailPage({
         }
       />
 
-      <section className="overflow-hidden rounded-xl border bg-card">
+      <section className="surface-card overflow-hidden">
         <div className="flex flex-col gap-4 border-b px-5 py-5 sm:flex-row sm:items-start sm:justify-between sm:px-8">
           <div>
             <p className="text-caption uppercase tracking-[0.16em]">
@@ -121,7 +121,7 @@ export default async function StudentRequestDetailPage({
         </dl>
       </section>
 
-      <section className="rounded-xl border bg-card px-5 py-6 sm:px-8">
+      <section className="surface-card px-5 py-6 sm:px-8">
         <h3 className="text-section">Status</h3>
         <p className="mt-1 text-sm text-muted-foreground">
           Each step is recorded when the registrar updates your request.

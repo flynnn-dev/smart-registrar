@@ -44,10 +44,10 @@ export default async function StudentRequestSuccessPage({
     <div className="space-y-8">
       <PageHeader
         title="Request submitted"
-        description="The registrar has your request. Keep the number below for follow-up."
+        description="The registrar has your request. Keep this number for follow-up."
       />
 
-      <section className="overflow-hidden rounded-xl border bg-card">
+      <section className="surface-card overflow-hidden">
         <div className="bg-linear-to-b from-primary/8 to-transparent px-5 py-8 text-center sm:px-8">
           <span className="mx-auto flex size-12 items-center justify-center rounded-full bg-status-completed-bg text-status-completed">
             <CheckCircle2 className="size-6" aria-hidden />

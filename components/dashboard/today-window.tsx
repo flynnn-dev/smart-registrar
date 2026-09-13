@@ -45,7 +45,7 @@ export function TodayWindow({ today }: TodayWindowProps) {
         </div>
       </div>
 
-      <div className="grid gap-4 rounded-xl border bg-card px-4 py-4 sm:grid-cols-3">
+      <div className="surface-card grid gap-4 px-4 py-4 sm:grid-cols-3">
         {items.map((item) => (
           <div key={item.label}>
             <p className="text-caption">{item.label}</p>

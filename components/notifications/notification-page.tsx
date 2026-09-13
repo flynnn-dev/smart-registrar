@@ -45,7 +45,7 @@ export function NotificationPage({
       <NotificationFilters href={href} current={current} />
 
       {visible.length === 0 ? (
-        <div className="rounded-xl border bg-card">
+        <div className="surface-card">
           <EmptyState
             icon={Bell}
             title={

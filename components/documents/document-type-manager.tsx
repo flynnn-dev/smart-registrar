@@ -120,7 +120,7 @@ export function DocumentTypeManager({
         {documentTypes.map((documentType) => (
           <article
             key={documentType.id}
-            className="space-y-3 rounded-xl border bg-card p-4"
+            className="surface-card space-y-3 p-4"
           >
             <div className="flex items-start justify-between gap-3">
               <div className="min-w-0">
@@ -166,7 +166,7 @@ export function DocumentTypeManager({
       )}
 
       {documentTypes.length === 0 ? null : (
-      <div className="hidden overflow-x-auto rounded-xl border md:block">
+      <div className="surface-card hidden overflow-x-auto md:block">
         <table className="w-full min-w-5xl text-sm">
           <thead className="border-b bg-muted/40 text-left text-caption">
             <tr>
@@ -179,7 +179,10 @@ export function DocumentTypeManager({
           </thead>
           <tbody>
             {documentTypes.map((documentType) => (
-              <tr key={documentType.id} className="border-b last:border-0">
+              <tr
+                key={documentType.id}
+                className="border-b last:border-0 motion-safe:transition-colors hover:bg-accent/40"
+              >
                 <td className="px-4 py-3">
                   <p className="font-medium">{documentType.name}</p>
                   <p className="mt-1 max-w-md text-caption">

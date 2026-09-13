@@ -162,7 +162,7 @@ export function RequestWizard({
               Tell the registrar why you need this document.
             </p>
           </div>
-          <div className="grid gap-3 rounded-xl border bg-card p-4 sm:grid-cols-2">
+          <div className="surface-card grid gap-3 p-4 sm:grid-cols-2">
             <div>
               <p className="text-caption">Student</p>
               <p className="mt-1 text-sm font-medium">{studentName}</p>
@@ -240,7 +240,7 @@ export function RequestWizard({
               Confirm these details before submitting.
             </p>
           </div>
-          <dl className="space-y-4 rounded-xl border bg-card p-5">
+          <dl className="surface-card space-y-4 p-5">
             <div>
               <dt className="text-caption">Document</dt>
               <dd className="mt-1 text-sm font-medium">
@@ -278,7 +278,7 @@ export function RequestWizard({
       ) : null}
       </div>
 
-      <div className="fixed inset-x-0 bottom-[var(--app-tabbar)] z-20 border-t bg-background px-4 py-3 md:left-64 md:px-8 print:static">
+      <div className="fixed inset-x-0 bottom-[var(--app-tabbar)] z-20 border-t bg-background/95 px-4 py-3 shadow-xs backdrop-blur-sm md:left-64 md:px-8 print:static">
         <div className="flex gap-2">
           {step > 1 ? (
             <Button

@@ -38,7 +38,7 @@ function ChartFrame({
   empty?: string;
 }) {
   return (
-    <figure className="rounded-xl border bg-card p-5">
+    <figure className="surface-card p-5">
       <figcaption>
         <p className="text-sm font-semibold">{title}</p>
         <p className="mt-1 text-sm text-muted-foreground">{description}</p>

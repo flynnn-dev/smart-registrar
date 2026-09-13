@@ -12,7 +12,7 @@ export function RequestCard({ request }: RequestCardProps) {
   return (
     <Link
       href={`/student/requests/${request.id}`}
-      className="block rounded-xl border bg-card p-4 transition-colors hover:bg-accent/40 focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:outline-none"
+      className="surface-card hover-lift block p-4 motion-safe:transition-colors hover:bg-accent/40 focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:outline-none"
     >
       <article className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-3">
         <div className="min-w-0">

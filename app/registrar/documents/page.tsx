@@ -43,7 +43,7 @@ export default async function RegistrarDocumentsPage({
       <div className="space-y-4">
         <DocumentTypeManager documentTypes={data.documentTypes} />
         {data.documentTypes.length === 0 ? (
-          <div className="rounded-xl border bg-card">
+          <div className="surface-card">
             <EmptyState
               icon={FileText}
               title="No document types match these filters"

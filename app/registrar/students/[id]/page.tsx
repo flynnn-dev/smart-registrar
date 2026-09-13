@@ -74,7 +74,7 @@ export default async function RegistrarStudentDetailPage({
         }
       />
 
-      <section className="overflow-hidden rounded-xl border bg-card">
+      <section className="surface-card overflow-hidden">
         <div className="flex flex-col gap-4 border-b px-5 py-5 sm:flex-row sm:items-start sm:justify-between sm:px-8">
           <div>
             <p className="text-caption uppercase tracking-[0.16em]">Student</p>
@@ -128,7 +128,7 @@ export default async function RegistrarStudentDetailPage({
           </p>
         </div>
         {student.requests.length === 0 ? (
-          <div className="rounded-xl border bg-card">
+          <div className="surface-card">
             <EmptyState
               icon={ClipboardList}
               title="No requests yet"
@@ -148,7 +148,7 @@ export default async function RegistrarStudentDetailPage({
           </p>
         </div>
         {student.upcomingAppointments.length === 0 ? (
-          <div className="rounded-xl border bg-card">
+          <div className="surface-card">
             <EmptyState
               icon={CalendarClock}
               title="No upcoming appointments"
@@ -160,7 +160,7 @@ export default async function RegistrarStudentDetailPage({
             {student.upcomingAppointments.map((appointment) => (
               <li
                 key={appointment.id}
-                className="flex flex-col gap-3 rounded-xl border bg-card px-5 py-4 sm:flex-row sm:items-center sm:justify-between"
+                className="surface-card flex flex-col gap-3 px-5 py-4 sm:flex-row sm:items-center sm:justify-between"
               >
                 <div>
                   <p className="text-sm font-medium">{appointment.label}</p>

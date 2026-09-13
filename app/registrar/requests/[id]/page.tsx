@@ -66,7 +66,7 @@ export default async function RegistrarRequestDetailPage({
         }
       />
 
-      <section className="overflow-hidden rounded-xl border bg-card">
+      <section className="surface-card overflow-hidden">
         <div className="flex flex-col gap-4 border-b px-5 py-5 sm:flex-row sm:items-start sm:justify-between sm:px-8">
           <div>
             <p className="text-caption uppercase tracking-[0.16em]">
@@ -169,7 +169,7 @@ export default async function RegistrarRequestDetailPage({
         </dl>
       </section>
 
-      <section className="rounded-xl border bg-card px-5 py-6 sm:px-8">
+      <section className="surface-card px-5 py-6 sm:px-8">
         <h3 className="text-section">Update status</h3>
         <p className="mt-1 text-sm text-muted-foreground">
           Only allowed transitions are shown. Each change is logged and the
@@ -180,7 +180,7 @@ export default async function RegistrarRequestDetailPage({
         </div>
       </section>
 
-      <section className="rounded-xl border bg-card px-5 py-6 sm:px-8">
+      <section className="surface-card px-5 py-6 sm:px-8">
         <h3 className="text-section">Status</h3>
         <p className="mt-1 text-sm text-muted-foreground">
           Completed steps keep their date and remarks from the history log.

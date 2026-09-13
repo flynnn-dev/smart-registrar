@@ -14,9 +14,9 @@ export function RegistrarStatCards({ stats }: RegistrarStatCardsProps) {
   ];
 
   return (
-    <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
+    <section className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
       {items.map((item) => (
-        <div key={item.label} className="rounded-lg border bg-card px-4 py-4">
+        <div key={item.label} className="surface-card px-4 py-4">
           <p className="text-caption">{item.label}</p>
           <p className="mt-2 text-2xl font-semibold tracking-tight">
             {item.value}

@@ -36,8 +36,8 @@ export default async function StudentDashboardPage() {
         }
       />
 
-      <StatCards stats={dashboard.stats} />
       <ActiveRequestPanel request={dashboard.featuredRequest} />
+      <StatCards stats={dashboard.stats} />
     </div>
   );
 }

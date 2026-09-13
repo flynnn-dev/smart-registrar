@@ -4,7 +4,7 @@ type NextUpProps = {
 
 export function NextUp({ numbers }: NextUpProps) {
   return (
-    <section className="rounded-xl border bg-card px-5 py-5">
+    <section className="surface-card px-5 py-5">
       <p className="text-caption uppercase tracking-[0.16em]">Next</p>
       {numbers.length === 0 ? (
         <p className="mt-3 text-sm text-muted-foreground">

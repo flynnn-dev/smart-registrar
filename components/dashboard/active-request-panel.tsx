@@ -22,7 +22,7 @@ export function ActiveRequestPanel({ request }: ActiveRequestPanelProps) {
       </div>
 
       {request ? (
-        <div className="space-y-5 rounded-xl border bg-card p-5">
+        <div className="surface-card space-y-5 p-5">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
             <div>
               <p className="text-caption">Request number</p>
@@ -61,7 +61,7 @@ export function ActiveRequestPanel({ request }: ActiveRequestPanelProps) {
           </div>
         </div>
       ) : (
-        <div className="rounded-xl border bg-card">
+        <div className="surface-card">
           <EmptyState
             icon={ClipboardList}
             title="No active requests"

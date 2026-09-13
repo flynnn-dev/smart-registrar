@@ -42,7 +42,7 @@ export default async function RegistrarTransactionsPage({
       <TransactionFilters filters={filters} />
 
       {data.transactions.length === 0 ? (
-        <div className="rounded-xl border bg-card">
+        <div className="surface-card">
           <EmptyState
             icon={ReceiptText}
             title="No transactions match these filters"

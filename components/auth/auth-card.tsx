@@ -20,8 +20,8 @@ export function AuthCard({
   footer,
 }: AuthCardProps) {
   return (
-    <Card className="rounded-lg">
-      <CardHeader>
+    <Card className="overflow-hidden rounded-xl shadow-card">
+      <CardHeader className="border-b bg-muted/30">
         <CardTitle>{title}</CardTitle>
         <CardDescription>{description}</CardDescription>
       </CardHeader>

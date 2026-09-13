@@ -24,7 +24,7 @@ export function Sidebar({ navigation, user }: SidebarProps) {
       <Separator />
       <div className="flex shrink-0 items-center gap-2 p-3">
         {user ? (
-          <div className="flex min-w-0 flex-1 items-center gap-2.5">
+          <div className="flex min-w-0 flex-1 items-center gap-2.5 rounded-lg px-1 py-0.5">
             <Avatar size="sm">
               {user.avatarUrl ? (
                 <AvatarImage src={user.avatarUrl} alt="" />

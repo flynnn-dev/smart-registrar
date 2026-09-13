@@ -30,7 +30,7 @@ export function RequestProgress({ steps }: RequestProgressProps) {
                   step.state === "complete" &&
                     "border-status-completed bg-status-completed text-white",
                   step.state === "current" &&
-                    "border-primary bg-primary text-primary-foreground",
+                    "border-primary bg-primary text-primary-foreground ring-4 ring-primary/15",
                   step.state === "rejected" &&
                     "border-status-rejected bg-status-rejected text-white",
                   step.state === "upcoming" &&

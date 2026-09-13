@@ -49,7 +49,7 @@ export function RequestTimeline({ status }: RequestTimelineProps) {
                   complete &&
                     "border-status-completed bg-status-completed text-white",
                   current &&
-                    "border-primary bg-primary text-primary-foreground",
+                    "border-primary bg-primary text-primary-foreground ring-4 ring-primary/15",
                   !complete &&
                     !current &&
                     "border-border bg-background text-muted-foreground"

@@ -78,7 +78,7 @@ export default async function RegistrarQueuePage({
       <QueueStatsRow board={data.board} />
 
       {data.entries.length === 0 ? (
-        <div className="rounded-xl border bg-card">
+        <div className="surface-card">
           <EmptyState
             icon={Ticket}
             title="No numbers for this day"
@@ -98,7 +98,7 @@ export default async function RegistrarQueuePage({
             ))}
           </div>
 
-          <div className="hidden overflow-x-auto rounded-xl border md:block">
+          <div className="surface-card hidden overflow-x-auto md:block">
             <table className="w-full min-w-[56rem] text-sm">
               <thead className="border-b bg-muted/40 text-left text-caption">
                 <tr>
@@ -112,7 +112,10 @@ export default async function RegistrarQueuePage({
               </thead>
               <tbody>
                 {data.entries.map((entry) => (
-                  <tr key={entry.id} className="border-b last:border-0">
+                  <tr
+                    key={entry.id}
+                    className="border-b last:border-0 motion-safe:transition-colors hover:bg-accent/40"
+                  >
                     <td className="px-4 py-3 font-mono font-semibold">
                       {entry.number}
                     </td>

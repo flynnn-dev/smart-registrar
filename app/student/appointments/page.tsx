@@ -38,7 +38,7 @@ export default async function StudentAppointmentsPage() {
       />
 
       {empty ? (
-        <div className="rounded-xl border bg-card">
+        <div className="surface-card">
           <EmptyState
             icon={CalendarClock}
             title="No appointments yet"

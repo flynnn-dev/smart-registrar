@@ -52,7 +52,7 @@ export function TransactionTable({ transactions }: TransactionTableProps) {
         {transactions.map((transaction) => (
           <article
             key={transaction.id}
-            className="space-y-3 rounded-xl border bg-card p-4"
+            className="surface-card space-y-3 p-4"
           >
             <div className="flex items-start justify-between gap-3">
               <p className="text-sm font-medium">{transaction.actionLabel}</p>
@@ -71,7 +71,7 @@ export function TransactionTable({ transactions }: TransactionTableProps) {
         ))}
       </div>
 
-      <div className="hidden overflow-x-auto rounded-xl border md:block">
+      <div className="surface-card hidden overflow-x-auto md:block">
         <table className="w-full min-w-5xl text-sm">
           <thead className="border-b bg-muted/40 text-left text-caption">
             <tr>
@@ -84,7 +84,10 @@ export function TransactionTable({ transactions }: TransactionTableProps) {
           </thead>
           <tbody>
             {transactions.map((transaction) => (
-              <tr key={transaction.id} className="border-b last:border-0">
+              <tr
+                key={transaction.id}
+                className="border-b last:border-0 motion-safe:transition-colors hover:bg-accent/40"
+              >
                 <td className="px-4 py-3 whitespace-nowrap">
                   {formatDateTime(transaction.createdAt)}
                 </td>

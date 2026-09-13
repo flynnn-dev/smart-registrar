@@ -14,7 +14,7 @@ export function AppointmentCard({
   actions,
 }: AppointmentCardProps) {
   return (
-    <article className="space-y-3 rounded-xl border bg-card p-4">
+    <article className="surface-card space-y-3 p-4">
       <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-3">
         <div className="min-w-0">
           <p className="text-sm font-medium">

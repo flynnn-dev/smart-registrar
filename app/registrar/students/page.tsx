@@ -40,7 +40,7 @@ export default async function RegistrarStudentsPage({
       <StudentFilters filters={filters} />
 
       {data.students.length === 0 ? (
-        <div className="rounded-xl border bg-card">
+        <div className="surface-card">
           <EmptyState
             icon={Users}
             title="No students match this search"

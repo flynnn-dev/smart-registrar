@@ -44,7 +44,7 @@ export default async function RegistrarAppointmentsPage({
       <AppointmentFilters current={filter} />
 
       {data.appointments.length === 0 ? (
-        <div className="rounded-xl border bg-card">
+        <div className="surface-card">
           <EmptyState
             icon={CalendarClock}
             title="No appointments in this view"
@@ -66,7 +66,7 @@ export default async function RegistrarAppointmentsPage({
             ))}
           </div>
 
-          <div className="hidden overflow-x-auto rounded-xl border md:block">
+          <div className="surface-card hidden overflow-x-auto md:block">
             <table className="w-full min-w-[52rem] text-sm">
               <thead className="border-b bg-muted/40 text-left text-caption">
                 <tr>
@@ -79,7 +79,10 @@ export default async function RegistrarAppointmentsPage({
               </thead>
               <tbody>
                 {data.appointments.map((appointment) => (
-                  <tr key={appointment.id} className="border-b last:border-0">
+                  <tr
+                    key={appointment.id}
+                    className="border-b last:border-0 motion-safe:transition-colors hover:bg-accent/40"
+                  >
                     <td className="px-4 py-3 font-medium">
                       {formatAppointmentSlot(appointment.date, appointment.time)}
                     </td>

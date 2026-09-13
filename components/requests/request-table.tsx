@@ -44,7 +44,7 @@ export function RequestTable({
           <Link
             key={request.id}
             href={`/registrar/requests/${request.id}`}
-            className="block rounded-xl border bg-card p-4 transition-colors hover:bg-accent/40 focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:outline-none"
+            className="surface-card hover-lift block p-4 motion-safe:transition-colors hover:bg-accent/40 focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:outline-none"
           >
             <article className="space-y-3">
               <div className="flex items-start justify-between gap-3">
@@ -75,7 +75,7 @@ export function RequestTable({
         ))}
       </div>
 
-      <div className="hidden overflow-x-auto rounded-xl border md:block">
+      <div className="surface-card hidden overflow-x-auto md:block">
         <table className="w-full min-w-[56rem] text-sm">
           <thead className="border-b bg-muted/40 text-left text-caption">
             <tr>
@@ -92,7 +92,10 @@ export function RequestTable({
           </thead>
           <tbody>
             {requests.map((request) => (
-              <tr key={request.id} className="border-b last:border-0">
+              <tr
+                key={request.id}
+                className="border-b last:border-0 motion-safe:transition-colors hover:bg-accent/40"
+              >
                 <td className="px-4 py-3 font-mono font-medium">
                   {request.requestNumber}
                 </td>

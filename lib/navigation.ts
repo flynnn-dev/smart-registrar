@@ -43,7 +43,7 @@ export function titleForPath(
 }
 
 export const landingLinks = [
-  { href: "/#process", label: "Process" },
+  { href: "/#process", label: "How It Works" },
   { href: "/#services", label: "Services" },
   { href: "/#why", label: "Why" },
 ] as const;

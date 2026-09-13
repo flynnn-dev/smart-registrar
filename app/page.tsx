@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 
+import { CtaSection } from "@/components/landing/cta-section";
 import { LandingHero } from "@/components/landing/hero";
 import { ProcessSection } from "@/components/landing/process-section";
+import { ProductPreviewSection } from "@/components/landing/product-preview-section";
 import { PublicFooter } from "@/components/landing/public-footer";
 import { ServicesSection } from "@/components/landing/services-section";
 import { WhySection } from "@/components/landing/why-section";
@@ -40,9 +42,11 @@ export default async function HomePage() {
       <PublicHeader showSectionLinks />
       <main>
         <LandingHero />
-        <ProcessSection />
-        <ServicesSection documentTypes={documentTypes} />
         <WhySection />
+        <ProcessSection />
+        <ProductPreviewSection />
+        <ServicesSection documentTypes={documentTypes} />
+        <CtaSection />
       </main>
       <PublicFooter officeHours={summarizeOfficeHours(officeHours)} />
     </div>

@@ -22,13 +22,13 @@ export function NotificationList({
   const router = useRouter();
 
   return (
-    <ul className="divide-y rounded-xl border bg-card">
+    <ul className="surface-card divide-y">
       {notifications.map((notification) => (
         <li key={notification.id}>
           <button
             type="button"
             className={cn(
-              "w-full px-4 py-4 text-left transition-colors hover:bg-accent/40 focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:outline-none",
+              "w-full px-4 py-4 text-left motion-safe:transition-colors hover:bg-accent/40 focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:outline-none",
               !notification.isRead && "bg-primary/4"
             )}
             onClick={() => {

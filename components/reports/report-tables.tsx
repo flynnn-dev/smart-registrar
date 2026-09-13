@@ -12,7 +12,7 @@ export function ReportTables({ report }: ReportTablesProps) {
   return (
     <div className="space-y-6">
       <section className="grid gap-4 lg:grid-cols-2">
-        <div className="overflow-hidden rounded-xl border bg-card print:break-inside-avoid">
+        <div className="surface-card overflow-hidden print:break-inside-avoid">
           <div className="border-b px-4 py-3">
             <h3 className="text-section">Requests by document type</h3>
             <p className="mt-1 text-caption">{report.rangeLabel}</p>
@@ -41,7 +41,7 @@ export function ReportTables({ report }: ReportTablesProps) {
           )}
         </div>
 
-        <div className="overflow-hidden rounded-xl border bg-card print:break-inside-avoid">
+        <div className="surface-card overflow-hidden print:break-inside-avoid">
           <div className="border-b px-4 py-3">
             <h3 className="text-section">Requests by status</h3>
             <p className="mt-1 text-caption">{report.rangeLabel}</p>
@@ -71,7 +71,7 @@ export function ReportTables({ report }: ReportTablesProps) {
         </div>
       </section>
 
-      <section className="overflow-hidden rounded-xl border bg-card print:break-inside-avoid">
+      <section className="surface-card overflow-hidden print:break-inside-avoid">
         <div className="border-b px-4 py-3">
           <h3 className="text-section">Requests in this range</h3>
           <p className="mt-1 text-caption">

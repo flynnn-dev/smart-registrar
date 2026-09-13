@@ -22,7 +22,11 @@ const THEME_OPTIONS = [
   { value: "system", label: "System", icon: Monitor },
 ] as const;
 
-export function ThemeToggle() {
+type ThemeToggleProps = {
+  className?: string;
+};
+
+export function ThemeToggle({ className }: ThemeToggleProps) {
   const { theme, setTheme } = useTheme();
 
   return (
@@ -30,7 +34,12 @@ export function ThemeToggle() {
       <Tooltip>
         <TooltipTrigger asChild>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="icon" aria-label="Change theme">
+            <Button
+              variant="ghost"
+              size="icon"
+              className={className}
+              aria-label="Change theme"
+            >
               <Sun className="size-4 dark:hidden" />
               <Moon className="hidden size-4 dark:block" />
             </Button>

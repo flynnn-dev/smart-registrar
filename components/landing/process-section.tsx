@@ -22,7 +22,7 @@ const STEPS = [
     icon: ClipboardList,
   },
   {
-    title: "Pick Up Your Document",
+    title: "Pick Up Document",
     description: "Get notified when it is ready, then collect it at the registrar office.",
     icon: PackageCheck,
   },
@@ -30,31 +30,44 @@ const STEPS = [
 
 export function ProcessSection() {
   return (
-    <section id="process" className="scroll-mt-20 border-b">
-      <div className="mx-auto w-full max-w-6xl px-4 py-16 md:px-6 md:py-20">
-        <p className="text-caption font-medium uppercase tracking-[0.16em]">
-          Simple Process
+    <section id="process" className="scroll-mt-20">
+      <div className="mx-auto w-full max-w-6xl px-4 py-20 md:px-6 md:py-28">
+        <p className="text-center text-caption font-medium uppercase tracking-[0.16em]">
+          How it works
         </p>
-        <h2 className="mt-2 text-page-title">Four steps from request to pickup</h2>
-        <ol className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <h2 className="mx-auto mt-3 max-w-2xl text-center text-page-title md:text-4xl">
+          Four steps from request to pickup
+        </h2>
+        <ol className="relative mt-14 space-y-8 md:grid md:grid-cols-4 md:gap-6 md:space-y-0">
+          <span
+            aria-hidden
+            className="absolute top-5 bottom-5 left-5 w-px bg-border md:hidden"
+          />
+          <span
+            aria-hidden
+            className="absolute top-5 right-[12%] left-[12%] hidden h-px bg-border md:block"
+          />
           {STEPS.map((step, index) => {
             const Icon = step.icon;
 
             return (
-              <li
-                key={step.title}
-                className="rounded-xl border bg-card p-5"
-              >
-                <div className="flex items-center justify-between">
-                  <span className="inline-flex size-9 items-center justify-center rounded-md bg-primary/10 text-primary">
-                    <Icon className="size-4" aria-hidden />
+              <li key={step.title} className="relative pl-14 md:pl-0">
+                <div className="flex items-start gap-3 md:flex-col md:items-center md:text-center">
+                  <span className="absolute top-0 left-0 z-10 inline-flex size-10 items-center justify-center rounded-full border bg-background text-xs font-medium text-foreground shadow-xs md:static">
+                    {String(index + 1).padStart(2, "0")}
                   </span>
-                  <span className="text-caption">{index + 1} / 4</span>
+                  <div>
+                    <span className="mb-3 inline-flex size-11 items-center justify-center rounded-full bg-muted text-primary">
+                      <Icon className="size-5" aria-hidden />
+                    </span>
+                    <h3 className="text-lg font-semibold tracking-tight">
+                      {step.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                      {step.description}
+                    </p>
+                  </div>
                 </div>
-                <h3 className="mt-4 text-card-title">{step.title}</h3>
-                <p className="mt-1 text-sm leading-6 text-muted-foreground">
-                  {step.description}
-                </p>
               </li>
             );
           })}

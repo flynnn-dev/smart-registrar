@@ -46,7 +46,7 @@ export function RequestStepper({ currentStep }: RequestStepperProps) {
                     complete &&
                       "border-status-completed bg-status-completed text-white",
                     active &&
-                      "border-primary bg-primary text-primary-foreground",
+                      "border-primary bg-primary text-primary-foreground ring-4 ring-primary/15",
                     !complete &&
                       !active &&
                       "border-border bg-background text-muted-foreground"

@@ -34,7 +34,7 @@ export default async function StudentRequestsPage() {
       />
 
       {empty ? (
-        <div className="rounded-xl border bg-card">
+        <div className="surface-card">
           <EmptyState
             icon={ClipboardList}
             title="No requests yet"

@@ -53,8 +53,8 @@ export function AppointmentPicker({
                 aria-pressed={selected}
                 className={cn(
                   "min-h-14 min-w-[5.5rem] shrink-0 rounded-lg border px-3 py-2 text-center transition-colors",
-                  selected
-                    ? "border-primary bg-primary text-primary-foreground"
+                    selected
+                    ? "border-primary bg-primary text-primary-foreground shadow-xs"
                     : "bg-card hover:border-primary/40"
                 )}
               >
@@ -93,7 +93,7 @@ export function AppointmentPicker({
                   className={cn(
                     "min-h-14 rounded-lg border px-3 py-2 text-left transition-colors",
                     selected &&
-                      "border-primary bg-primary text-primary-foreground",
+                      "border-primary bg-primary text-primary-foreground shadow-xs",
                     !selected &&
                       !full &&
                       "bg-card hover:border-primary/40",
