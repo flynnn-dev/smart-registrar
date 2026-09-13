@@ -6,7 +6,9 @@ import {
   APP_CONTACT_LOCATION,
   APP_CONTACT_OFFICE,
   APP_NAME,
+  APP_SCHOOL_NAME,
 } from "@/lib/brand";
+import { landingLinks } from "@/lib/navigation";
 
 type PublicFooterProps = {
   officeHours?: string | null;
@@ -21,9 +23,10 @@ export function PublicFooter({ officeHours }: PublicFooterProps) {
       <div className="mx-auto grid w-full max-w-6xl gap-10 px-4 py-14 md:grid-cols-4 md:px-6">
         <div>
           <Logo tone="inverse" />
-          <p className="mt-4 max-w-xs text-sm leading-6 text-white/55">
-            {APP_NAME} helps students request documents, book appointments, and
-            follow a digital queue without an untracked line.
+          <p className="mt-3 text-sm text-white/45">{APP_SCHOOL_NAME}</p>
+          <p className="mt-3 max-w-xs text-sm leading-6 text-white/55">
+            Request documents, book a slot, and follow a digital queue at the
+            window.
           </p>
         </div>
 
@@ -35,16 +38,13 @@ export function PublicFooter({ officeHours }: PublicFooterProps) {
                 Home
               </Link>
             </li>
-            <li>
-              <Link href="/#services" className="hover:text-white">
-                Services
-              </Link>
-            </li>
-            <li>
-              <Link href="/#process" className="hover:text-white">
-                How It Works
-              </Link>
-            </li>
+            {landingLinks.map((link) => (
+              <li key={link.href}>
+                <Link href={link.href} className="hover:text-white">
+                  {link.label}
+                </Link>
+              </li>
+            ))}
             <li>
               <Link href="/login" className="hover:text-white">
                 Sign In
@@ -90,7 +90,7 @@ export function PublicFooter({ officeHours }: PublicFooterProps) {
       </div>
       <div className="border-t border-white/10">
         <p className="mx-auto w-full max-w-6xl px-4 py-4 text-xs text-white/45 md:px-6">
-          © {new Date().getFullYear()} {APP_NAME}. All rights reserved.
+          © 2026 {APP_NAME}. All rights reserved.
         </p>
       </div>
     </footer>

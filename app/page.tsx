@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 
 import { CtaSection } from "@/components/landing/cta-section";
+import { FaqSection } from "@/components/landing/faq-section";
 import { LandingHero } from "@/components/landing/hero";
 import { ProcessSection } from "@/components/landing/process-section";
 import { ProductPreviewSection } from "@/components/landing/product-preview-section";
@@ -46,6 +47,7 @@ export default async function HomePage() {
         <ProcessSection />
         <ProductPreviewSection />
         <ServicesSection documentTypes={documentTypes} />
+        <FaqSection />
         <CtaSection />
       </main>
       <PublicFooter officeHours={summarizeOfficeHours(officeHours)} />

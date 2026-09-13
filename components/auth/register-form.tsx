@@ -115,9 +115,9 @@ export function RegisterForm() {
 
   if (needsConfirmation) {
     return (
-      <div className="space-y-3 rounded-md border bg-muted/40 px-4 py-4 text-sm">
+      <div className="space-y-4 rounded-xl border bg-muted/40 px-4 py-5 text-sm">
         <p className="font-medium">Confirm your email to finish signing up.</p>
-        <p className="text-muted-foreground">
+        <p className="leading-6 text-muted-foreground">
           We sent a confirmation link to {pendingEmail || "your inbox"}. After
           you confirm, you can sign in.
         </p>
@@ -125,7 +125,7 @@ export function RegisterForm() {
           <Button
             type="button"
             variant="outline"
-            size="sm"
+            className="h-10 rounded-full px-4"
             disabled={resendState === "sending" || resendState === "sent"}
             onClick={resendConfirmation}
           >
@@ -145,45 +145,52 @@ export function RegisterForm() {
   }
 
   return (
-    <form className="space-y-4" onSubmit={handleSubmit(onSubmit)} noValidate>
+    <form className="space-y-5" onSubmit={handleSubmit(onSubmit)} noValidate>
       {formError ? (
-        <p className="rounded-md border border-destructive/20 bg-destructive/10 px-3 py-2 text-sm text-destructive">
+        <p className="rounded-lg border border-destructive/20 bg-destructive/10 px-3 py-2 text-sm text-destructive">
           {formError}
         </p>
       ) : null}
 
-      <FormField
-        label="Full name"
-        htmlFor="fullName"
-        error={errors.fullName?.message}
-      >
-        <Input
-          id="fullName"
-          autoComplete="name"
-          aria-invalid={Boolean(errors.fullName)}
-          {...register("fullName")}
-        />
-      </FormField>
+      <div className="grid gap-4 sm:grid-cols-2">
+        <FormField
+          label="Full name"
+          htmlFor="fullName"
+          error={errors.fullName?.message}
+        >
+          <Input
+            id="fullName"
+            autoComplete="name"
+            className="h-11 md:h-11"
+            aria-invalid={Boolean(errors.fullName)}
+            {...register("fullName")}
+          />
+        </FormField>
 
-      <FormField
-        label="Student ID"
-        htmlFor="studentId"
-        hint="Example: 2026-00123"
-        error={errors.studentId?.message}
-      >
-        <Input
-          id="studentId"
-          autoComplete="off"
-          aria-invalid={Boolean(errors.studentId)}
-          {...register("studentId")}
-        />
-      </FormField>
+        <FormField
+          label="Student ID"
+          htmlFor="studentId"
+          hint="Example: 2026-00123"
+          error={errors.studentId?.message}
+        >
+          <Input
+            id="studentId"
+            autoComplete="off"
+            placeholder="2026-00123"
+            className="h-11 md:h-11"
+            aria-invalid={Boolean(errors.studentId)}
+            {...register("studentId")}
+          />
+        </FormField>
+      </div>
 
       <FormField label="Email" htmlFor="email" error={errors.email?.message}>
         <Input
           id="email"
           type="email"
           autoComplete="email"
+          placeholder="you@university.edu"
+          className="h-11 md:h-11"
           aria-invalid={Boolean(errors.email)}
           {...register("email")}
         />
@@ -199,40 +206,49 @@ export function RegisterForm() {
           id="phone"
           type="tel"
           autoComplete="tel"
+          className="h-11 md:h-11"
           aria-invalid={Boolean(errors.phone)}
           {...register("phone")}
         />
       </FormField>
 
-      <FormField
-        label="Password"
-        htmlFor="password"
-        error={errors.password?.message}
-      >
-        <Input
-          id="password"
-          type="password"
-          autoComplete="new-password"
-          aria-invalid={Boolean(errors.password)}
-          {...register("password")}
-        />
-      </FormField>
+      <div className="grid gap-4 sm:grid-cols-2">
+        <FormField
+          label="Password"
+          htmlFor="password"
+          error={errors.password?.message}
+        >
+          <Input
+            id="password"
+            type="password"
+            autoComplete="new-password"
+            className="h-11 md:h-11"
+            aria-invalid={Boolean(errors.password)}
+            {...register("password")}
+          />
+        </FormField>
 
-      <FormField
-        label="Confirm password"
-        htmlFor="confirmPassword"
-        error={errors.confirmPassword?.message}
-      >
-        <Input
-          id="confirmPassword"
-          type="password"
-          autoComplete="new-password"
-          aria-invalid={Boolean(errors.confirmPassword)}
-          {...register("confirmPassword")}
-        />
-      </FormField>
+        <FormField
+          label="Confirm password"
+          htmlFor="confirmPassword"
+          error={errors.confirmPassword?.message}
+        >
+          <Input
+            id="confirmPassword"
+            type="password"
+            autoComplete="new-password"
+            className="h-11 md:h-11"
+            aria-invalid={Boolean(errors.confirmPassword)}
+            {...register("confirmPassword")}
+          />
+        </FormField>
+      </div>
 
-      <Button type="submit" className="w-full" disabled={isSubmitting}>
+      <Button
+        type="submit"
+        className="landing-cta h-11 w-full"
+        disabled={isSubmitting}
+      >
         {isSubmitting ? <Loader2 className="animate-spin" /> : null}
         Create account
       </Button>

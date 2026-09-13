@@ -43,9 +43,10 @@ export function titleForPath(
 }
 
 export const landingLinks = [
+  { href: "/#why", label: "Benefits" },
   { href: "/#process", label: "How It Works" },
-  { href: "/#services", label: "Services" },
-  { href: "/#why", label: "Why" },
+  { href: "/#preview", label: "Queue" },
+  { href: "/#services", label: "Documents" },
 ] as const;
 
 export const studentNavigation: NavItem[] = [

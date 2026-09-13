@@ -235,7 +235,69 @@
   }
 
   .landing-cta {
-    @apply rounded-full bg-[oklch(0.55_0.2_264)] text-white hover:bg-[oklch(0.48_0.19_264)] hover:text-white;
+    @apply rounded-full !bg-[oklch(0.55_0.2_264)] !text-white hover:!bg-[oklch(0.48_0.19_264)] hover:!text-white dark:!bg-[oklch(0.55_0.2_264)] dark:!text-white dark:hover:!bg-[oklch(0.48_0.19_264)] dark:hover:!text-white motion-safe:transition-[background-color,transform] motion-safe:duration-200 motion-safe:hover:-translate-y-0.5;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translate3d(0, 1rem, 0);
+  }
+
+  .reveal:not(.reveal-visible) {
+    animation: reveal-up 0.45s 1.6s both;
+  }
+
+  .reveal-visible {
+    animation: reveal-up 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .reveal-delay-1 {
+    animation-delay: 70ms;
+  }
+
+  .reveal-delay-2 {
+    animation-delay: 140ms;
+  }
+
+  .reveal-delay-3 {
+    animation-delay: 210ms;
+  }
+
+  .reveal-delay-4 {
+    animation-delay: 280ms;
+  }
+
+  .landing-live-dot {
+    animation: landing-pulse 2.2s ease-in-out infinite;
+  }
+
+  details[open] > .landing-faq-answer {
+    animation: reveal-up 0.28s ease-out both;
+  }
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 1rem, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes landing-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.45;
+    transform: scale(0.85);
   }
 }
 
@@ -251,6 +313,15 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+
+  .reveal,
+  .reveal-visible,
+  .landing-live-dot,
+  details[open] > .landing-faq-answer {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
 }
 
 @media print {
@@ -260,5 +331,23 @@
 
   body {
     background: white !important;
+  }
+
+  .reveal,
+  .reveal-visible,
+  .landing-live-dot,
+  details[open] > .landing-faq-answer {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
+
+@media (scripting: none) {
+  .reveal,
+  .reveal-visible {
+    opacity: 1;
+    transform: none;
+    animation: none;
   }
 }

@@ -55,9 +55,9 @@ export function UpdatePasswordForm({ role }: UpdatePasswordFormProps) {
   }
 
   return (
-    <form className="space-y-4" onSubmit={handleSubmit(onSubmit)} noValidate>
+    <form className="space-y-5" onSubmit={handleSubmit(onSubmit)} noValidate>
       {formError ? (
-        <p className="rounded-md border border-destructive/20 bg-destructive/10 px-3 py-2 text-sm text-destructive">
+        <p className="rounded-lg border border-destructive/20 bg-destructive/10 px-3 py-2 text-sm text-destructive">
           {formError}
         </p>
       ) : null}
@@ -71,6 +71,7 @@ export function UpdatePasswordForm({ role }: UpdatePasswordFormProps) {
           id="password"
           type="password"
           autoComplete="new-password"
+          className="h-11 md:h-11"
           aria-invalid={Boolean(errors.password)}
           {...register("password")}
         />
@@ -85,12 +86,17 @@ export function UpdatePasswordForm({ role }: UpdatePasswordFormProps) {
           id="confirmPassword"
           type="password"
           autoComplete="new-password"
+          className="h-11 md:h-11"
           aria-invalid={Boolean(errors.confirmPassword)}
           {...register("confirmPassword")}
         />
       </FormField>
 
-      <Button type="submit" className="w-full" disabled={isSubmitting}>
+      <Button
+        type="submit"
+        className="landing-cta h-11 w-full"
+        disabled={isSubmitting}
+      >
         {isSubmitting ? <Loader2 className="animate-spin" /> : null}
         Update password
       </Button>

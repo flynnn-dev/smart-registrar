@@ -84,7 +84,7 @@ export function PublicHeader({
         {showSectionLinks ? (
           <nav
             aria-label="Landing"
-            className="hidden items-center gap-1 text-sm md:flex"
+            className="hidden items-center gap-0.5 text-sm lg:flex"
           >
             {landingLinks.map((link) => {
               const id = link.href.replace("/#", "");
@@ -109,13 +109,7 @@ export function PublicHeader({
           </nav>
         ) : null}
         <div className="flex items-center gap-1 sm:gap-2">
-          <ThemeToggle
-            className={
-              marketing
-                ? "text-white hover:bg-white/10 hover:text-white"
-                : undefined
-            }
-          />
+          {marketing ? null : <ThemeToggle />}
           {showActions ? (
             <>
               <Button
@@ -123,7 +117,8 @@ export function PublicHeader({
                 size="sm"
                 className={cn(
                   "hidden md:inline-flex",
-                  marketing && "text-white hover:bg-white/10 hover:text-white"
+                  marketing &&
+                    "text-white hover:bg-white/10 hover:text-white dark:text-white dark:hover:bg-white/10 dark:hover:text-white"
                 )}
                 asChild
               >
@@ -134,7 +129,7 @@ export function PublicHeader({
                 className="landing-cta hidden px-4 md:inline-flex"
                 asChild
               >
-                <Link href="/register">Get Started</Link>
+                <Link href="/register">Create account</Link>
               </Button>
             </>
           ) : null}

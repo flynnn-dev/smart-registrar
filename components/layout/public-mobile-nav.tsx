@@ -39,7 +39,7 @@ export function PublicMobileNav({
         variant="ghost"
         size="icon"
         className={cn(
-          "size-10 md:hidden",
+          showSectionLinks ? "size-10 lg:hidden" : "size-10 md:hidden",
           tone === "inverse" && "text-white hover:bg-white/10 hover:text-white"
         )}
         aria-label="Open menu"
@@ -79,9 +79,9 @@ export function PublicMobileNav({
                     Sign In
                   </Link>
                 </Button>
-                <Button className="min-h-11" asChild>
+                <Button className="landing-cta min-h-11" asChild>
                   <Link href="/register" onClick={() => setOpen(false)}>
-                    Get Started
+                    {showSectionLinks ? "Request a document" : "Create account"}
                   </Link>
                 </Button>
               </div>

@@ -73,9 +73,9 @@ export function LoginForm({ nextPath }: LoginFormProps) {
   }
 
   return (
-    <form className="space-y-4" onSubmit={handleSubmit(onSubmit)} noValidate>
+    <form className="space-y-5" onSubmit={handleSubmit(onSubmit)} noValidate>
       {formError ? (
-        <p className="rounded-md border border-destructive/20 bg-destructive/10 px-3 py-2 text-sm text-destructive">
+        <p className="rounded-lg border border-destructive/20 bg-destructive/10 px-3 py-2 text-sm text-destructive">
           {formError}
         </p>
       ) : null}
@@ -85,6 +85,8 @@ export function LoginForm({ nextPath }: LoginFormProps) {
           id="email"
           type="email"
           autoComplete="email"
+          placeholder="you@university.edu"
+          className="h-11 md:h-11"
           aria-invalid={Boolean(errors.email)}
           {...register("email")}
         />
@@ -99,6 +101,7 @@ export function LoginForm({ nextPath }: LoginFormProps) {
           id="password"
           type="password"
           autoComplete="current-password"
+          className="h-11 md:h-11"
           aria-invalid={Boolean(errors.password)}
           {...register("password")}
         />
@@ -113,7 +116,11 @@ export function LoginForm({ nextPath }: LoginFormProps) {
         </Link>
       </div>
 
-      <Button type="submit" className="w-full" disabled={isSubmitting}>
+      <Button
+        type="submit"
+        className="landing-cta h-11 w-full"
+        disabled={isSubmitting}
+      >
         {isSubmitting ? <Loader2 className="animate-spin" /> : null}
         Sign in
       </Button>
